@@ -4,8 +4,9 @@ import useInput from "../hooks/useInput";
 const Login = () => {
   const email = useInput("");
   const password = useInput("");
+
   return (
-    <form>
+    <form >
       <form>
         <input
           type="email"
