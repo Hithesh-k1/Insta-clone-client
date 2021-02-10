@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Login from "./components/Login";
 
 function App() {
-  return (
-    <div>
-      <Login />
-    </div>
-  );
+  // const { user } = useContext(UserContext);
+  // return <div>{user ? <Login /> : <h1>LANDING PAGE</h1>}</div>;
+ return <Login/>
 }
 
 export default App;

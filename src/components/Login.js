@@ -2,10 +2,47 @@ import React, { useContext } from "react";
 import { toast } from "react-toastify";
 import useInput from "../hooks/useInput";
 import { client } from "../utils";
-import { UserContext } from "../context/UserContext";
+import styled from "styled-components";
 
+export const FormWrapper = styled.div`
+  background-color: ${(props) => props.theme.white};
+  padding: 1rem;
+  width: 350px;
+  border: 1px solid ${(props) => props.theme.borderColor};
+  margin: 6rem auto;
+  text-align: center;
+  padding: 2rem 0;
+  img {
+    margin-bottom: 1.5rem;
+  }
+  input {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1.2rem;
+    background: ${(props) => props.theme.white};
+    border: 1px solid ${(props) => props.theme.borderColor};
+    font-family: "Fira Sans", sans-serif;
+    font-size: 1rem;
+    border-radius: 4px;
+    width: 85%;
+  }
+  input[type="submit"] {
+    background-color: ${(props) => props.theme.blue};
+    color: ${(props) => props.theme.white};
+    border: 1px solid ${(props) => props.theme.blue};
+    cursor: pointer;
+  }
+  p {
+    margin-top: 2rem;
+  }
+  span {
+    color: ${(props) => props.theme.blue};
+    cursor: pointer;
+  }
+`;
 const Login = () => {
-  const { setUser } = useContext(UserContext);
+  //   const { setUser } = useContext(UserContext);
   const email = useInput("");
   const password = useInput("");
   const handleLogin = async (e) => {
@@ -26,14 +63,15 @@ const Login = () => {
 
     const user = await client("/auth/me");
     localStorage.setItem("user", JSON.stringify(user.data));
-    setUser(user.data);
+    const user1 = { data: "name" };
+    // setUser(user1.data);
     toast.success("Login successful");
 
     email.setValue("");
     password.setValue("");
   };
   return (
-    <form onSubmit={handleLogin}>
+    <FormWrapper onSubmit={handleLogin}>
       <form>
         <input
           type="email"
@@ -55,7 +93,7 @@ const Login = () => {
           Don't have an account? <span>Sign up</span>
         </p>
       </div>
-    </form>
+    </FormWrapper>
   );
 };
 
