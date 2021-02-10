@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { toast } from "react-toastify";
 import useInput from "../hooks/useInput";
+import { client } from "../utils";
+import { UserContext } from "../context/UserContext";
 
 const Login = () => {
+  const { setUser } = useContext(UserContext);
   const email = useInput("");
   const password = useInput("");
-   const handleLogin = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     if (!email.value || !password.value) {
