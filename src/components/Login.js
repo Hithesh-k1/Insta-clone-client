@@ -11,7 +11,7 @@ const Login = () => {
 
       <div>
         <p>
-          Don't have an account? <span onClick={signup}>Sign up</span>
+          Don't have an account? <span>Sign up</span>
         </p>
       </div>
     </form>
